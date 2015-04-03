@@ -6,7 +6,6 @@ import json
 import hashlib
 import urlparse
 from django.conf import settings
-from lib.picture.qiniu_proxy import PutPolicy
 
 
 def load_hash():
@@ -24,10 +23,10 @@ def wrap_url(url, hash_, limit=8):
     """
     >>> wrap_url('/image/a.png', '123')
     '/image/a.123.png'
-    >>> wrap_url('http://static.daixiaomi.com/image/a.png', '123')
-    'http://static.daixiaomi.com/image/a.123.png'
-    >>> wrap_url('http://static.daixiaomi.com/image/a', '123')
-    'http://static.daixiaomi.com/image/a.123'
+    >>> wrap_url('http://static.example.com/image/a.png', '123')
+    'http://static.example.com/image/a.123.png'
+    >>> wrap_url('http://static.example.com/image/a', '123')
+    'http://static.example.com/image/a.123'
     """
     hash_ = hash_[:limit]
     p = urlparse.urlparse(url)
@@ -52,7 +51,6 @@ def wrap_url(url, hash_, limit=8):
 
 class StaticFile(object):
 
-    BUCKET = 'daixm-public'
 
     (STATIC_NEW, STATIC_UPDATE, STATIC_EQUAL) = range(3)
 
@@ -110,8 +108,8 @@ class StaticFile(object):
         return wrap_url(self.rel_path, hash_)
 
     def upload(self):
-        policy = PutPolicy(self.BUCKET)
-        return policy.upload(open(self.path), self.cdn_name)
+        # your uploading logic
+        pass
 
 def serve():
     pool = load_hash()
@@ -127,6 +125,6 @@ def serve():
 
 
 if __name__ == "__main__":
-    #import doctest
-    #doctest.testmod()
-    serve()
+    import doctest
+    doctest.testmod()
+    #serve()

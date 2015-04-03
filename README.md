@@ -13,7 +13,7 @@
 
     ONLINE_STATIC_ROOT = 'static' # online prefix
 
-    CDN_FINDER_PREFIX = 'http://static.daixiaomi.com'
+    CDN_FINDER_PREFIX = 'http://static.example.com'
 
     INSTALLED_APPS = (
         'other apps',

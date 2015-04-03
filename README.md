@@ -16,7 +16,7 @@
     CDN_FINDER_PREFIX = 'http://static.daixiaomi.com'
 
     INSTALLED_APPS = (
-        'other apps'
+        'other apps',
         'cdn',
     )
 
@@ -27,3 +27,6 @@
 
 ```
 
+### Hope to help
+
+[here](https://github.com/torpedoallen/django-cdn-extension/blob/master/cdn/models.py "static file") is a static files packaging script

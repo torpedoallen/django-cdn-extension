@@ -28,5 +28,5 @@
 ```
 
 ### Hope to help
-
+***
 [here](https://github.com/torpedoallen/django-cdn-extension/blob/master/cdn/models.py "static file") is a static files packaging script
